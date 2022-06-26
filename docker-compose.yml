@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: tail -f /dev/null # バックグラウンド起動用(構築時)
+    # command: /app/wpd_blog_app/bin/rails s -p 3000 -b '0.0.0.0' # 開発時
+    volumes:
+      - type: bind
+        source: ./app
+        target: /app
+    ports:
+      - "50882:3000"
